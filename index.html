@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureLink Encoder</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SecureLink Encoder</h1>
+        <label for="inputUrl">Input URL:</label>
+        <input type="text" id="inputUrl" name="inputUrl">
+        <label for="secret">Secret:</label>
+        <input type="password" id="secret" name="secret">
+        <label for="userID">User ID:</label>
+        <input type="password" id="userID" name="userID">
+        <button onclick="generateEncodedUrl()">Encode URL</button>
+        <label for="outputUrl">Encoded URL:</label>
+        <input type="text" id="outputUrl" name="outputUrl" readonly>
+    </div>
+    <script>
+        function generateEncodedUrl() {
+            const inputUrl = document.getElementById('inputUrl').value;
+            const secret = document.getElementById('secret').value;
+            const userID = document.getElementById('userID').value;
+
+            const signature = md5(inputUrl + userID + secret);
+            const uri = inputUrl + "::" + userID + "::" + signature;
+
+            const preEncode64 = btoa(uri);
+            const finalEncode = "https://secure.link/" + preEncode64;
+
+            document.getElementById('outputUrl').value = finalEncode;
+        }
+
+        function md5(input) {
+            const md5 = new TextEncoder().encode(input);
+            return crypto.subtle.digest('MD5', md5).then(buffer => {
+                return Array.from(new Uint8Array(buffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+            });
+        }
+    </script>
+</body>
+</html>
