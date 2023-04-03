@@ -7,26 +7,32 @@
     <!-- Add Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl7/1L_dstPt3HV5HzF6Gvk/e3R+n5A4X7fTxDc3E" crossorigin="anonymous">
     <style>
+        body {
+            background-color: #212529;
+        }
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             padding-top: 2rem;
         }
+        label {
+            color: #fff;
+        }
     </style>
 </head>
-<body class="bg-dark text-white">
+<body>
     <div class="container">
-        <h1>SecureLink Encoder</h1>
+        <h1 class="text-white">SecureLink Encoder</h1>
         <label for="inputUrl">Input URL:</label>
-        <input type="text" id="inputUrl" name="inputUrl" class="form-control">
+        <input type="text" id="inputUrl" name="inputUrl" class="form-control bg-dark text-white">
         <label for="secret">Secret:</label>
-        <input type="password" id="secret" name="secret" class="form-control">
+        <input type="password" id="secret" name="secret" class="form-control bg-dark text-white">
         <label for="userID">User ID:</label>
-        <input type="password" id="userID" name="userID" class="form-control">
+        <input type="password" id="userID" name="userID" class="form-control bg-dark text-white">
         <button onclick="generateEncodedUrl()" class="btn btn-primary mt-2">Encode URL</button>
         <label for="outputUrl">Encoded URL:</label>
-        <input type="text" id="outputUrl" name="outputUrl" class="form-control" readonly>
+        <input type="text" id="outputUrl" name="outputUrl" class="form-control bg-dark text-white" readonly>
     </div>
     <script>
         async function generateEncodedUrl() {
@@ -52,4 +58,4 @@
     </script>
     <!-- Add Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybB4J4H57h4O3mz4dV3V4Xg5IM6P5E4JPa8/7Yc6z5E6LyFbW" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-rf1weI
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity
